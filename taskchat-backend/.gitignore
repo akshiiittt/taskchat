@@ -1,0 +1,52 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Output of `go build`
+/build/
+/bin/
+/dist/
+
+# Vendor directory (if not using Go modules)
+vendor/
+
+# Go workspace file (Go 1.18+)
+/go.work
+/go.work.sum
+
+# Go module cache
+/pkg/mod/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Dependency directories (node for frontend-in-GOFiber apps)
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Environment files
+.env
+.env.*   # e.g., .env.dev, .env.local
+
+# Fiber-specific files (if any custom cache, like templates)
+fiber.lock
+
+# Static build outputs (optional, if any frontend build)
+public/build/

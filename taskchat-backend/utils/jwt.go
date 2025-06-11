@@ -9,24 +9,21 @@ import (
 	"github.com/google/uuid"
 )
 
-func GenerateJWT(UserID uuid.UUID, email string) (string, error) {
-	// setting up the data that we need to store in the jwt
+// GenerateJWT creates a JWT token
+func GenerateJWT(userID uuid.UUID, email string) (string, error) {
 	claims := jwt.MapClaims{
-		"user_id": UserID.String(),
+		"user_id": userID.String(),
 		"email":   email,
 		"exp":     time.Now().Add(time.Hour * 24).Unix(),
 		"iat":     time.Now().Unix(),
 		"jti":     uuid.New().String(),
 	}
 
-	//create the token with claims
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-
 	secret := os.Getenv("JWT_SECRET")
 	if secret == "" {
-		return "", fmt.Errorf("JWT SECRET not set")
+		return "", fmt.Errorf("JWT_SECRET not set")
 	}
 
-	// signing the token with the secret
 	return token.SignedString([]byte(secret))
 }

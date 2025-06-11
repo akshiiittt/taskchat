@@ -50,3 +50,5 @@ fiber.lock
 
 # Static build outputs (optional, if any frontend build)
 public/build/
+
+.DS_Store

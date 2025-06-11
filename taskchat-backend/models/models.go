@@ -18,7 +18,15 @@ type Note struct {
 	UserID    uuid.UUID `gorm:"type:uuid;not null;index"`
 	Title     string    `gorm:"type:varchar(100);not null"`
 	CreatedAt time.Time `gorm:"autoCreateTime"`
+	UpdatedAt time.Time `gorm:"autoUpdateTime"`
 }
+
+type TaskStatus string
+
+const (
+	StatusPending   TaskStatus = "pending"
+	StatusCompleted TaskStatus = "completed"
+)
 
 type Task struct {
 	ID        uuid.UUID `gorm:"type:uuid;primaryKey"`
@@ -26,7 +34,7 @@ type Task struct {
 	UserID    uuid.UUID `gorm:"type:uuid;not null;index"`
 	Title     string    `gorm:"type:varchar(255);not null"`
 	Status    string    `gorm:"type:varchar(100);not null;default:'pending'"`
-	Priority  string    `gorm:"type:varchar(100);not null;default:'none'"`
+	Priority  string    `gorm:"type:varchar(100);not null;default:' '"`
 	CreatedAt time.Time `gorm:"autoCreateTime"`
 	UpdatedAt time.Time `gorm:"autoUpdateTime"`
 }
